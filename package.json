@@ -18,6 +18,7 @@
   "homepage": "https://github.com/joshcamas/ardenfall-tweeter#readme",
   "dependencies": {
     "node-twitterbot": "^0.2.2",
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "cron": "^1.7.1"
   }
 }
