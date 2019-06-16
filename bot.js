@@ -15,7 +15,7 @@ var Bot = new Twit({
  access_token_secret: BOT_ACCESS_TOKEN_SECRET
 });
 
-console.log('The bot is running...');
+console.log('Setting up Bot');
 
 function RetweetStatus(status,onComplete) 
 {
@@ -62,6 +62,9 @@ function RetweetStatus(status,onComplete)
 }
 
 function InitiateRetweet() {
+
+	
+	console.log('Starting Retweet')
 
 	var query = {
 		q: BOT_SEARCH_PHRASE,
