@@ -1,4 +1,4 @@
-var bot = require('bot.js').Bot;
+var bot = require('./bot.js').Bot;
 var CronJob = require('cron').CronJob;
 
 var botInstance = new bot();
