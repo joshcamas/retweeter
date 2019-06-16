@@ -31,6 +31,8 @@ exports.Bot = function()
 			id : status.id_str
 		}
 		
+		console.log("Favorited: " + status.favorited + ", Retweeted: " + status.retweeted);
+		
 		//Check if status has already been favorited or retweeted
 		if(status.favorited || status.retweeted) {
 			console.log("Already favorited or retweeted.")
