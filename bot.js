@@ -65,7 +65,7 @@ exports.Bot = function()
 		}
 	}
 
-	this.InitiateRetweet = Function() {
+	this.InitiateRetweet = function() {
 
 		console.log('Starting Retweet')
 
