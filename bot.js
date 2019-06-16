@@ -56,14 +56,13 @@ exports.Bot = function()
 			function BotRetweeted(error, response) {
 				if (error) {
 					console.log('Bot could not retweet, : ' + error);
-					onComplete(false);
-					return
 				}
 				else {
 					console.log('Bot retweeted : ' + id.id);
-					onComplete(true);
-					return	
 				}
+				
+				onComplete(true);
+				return;
 			}	
 		}
 	}
