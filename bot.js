@@ -73,7 +73,8 @@ exports.Bot = function()
 
 		var query = {
 			q: BOT_SEARCH_PHRASE,
-			result_type: "recent"
+			result_type: "recent",
+			count: 5
 		}
 
 		self.Bot.get('search/tweets', query, BotGotLatestTweet);
