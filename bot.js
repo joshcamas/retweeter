@@ -2,6 +2,8 @@
 var Twit = require("twit");
 var TwitterBot = require("node-twitterbot").TwitterBot;
 
+var lastscan = -1;
+
 var BOT_SEARCH_PHRASE = process.env.BOT_SEARCH_PHRASE;
 var BOT_CONSUMER_KEY = process.env.BOT_CONSUMER_KEY;
 var BOT_CONSUMER_SECRET = process.env.BOT_CONSUMER_SECRET;
@@ -63,7 +65,6 @@ function RetweetStatus(status,onComplete)
 
 function InitiateRetweet() {
 
-	
 	console.log('Starting Retweet')
 
 	var query = {
