@@ -1,49 +1,49 @@
 
 Twit = require("twit");
 
+BOT_SEARCH_PHRASE = process.env.BOT_SEARCH_PHRASE;
+BOT_CONSUMER_KEY = process.env.BOT_CONSUMER_KEY;
+BOT_CONSUMER_SECRET = process.env.BOT_CONSUMER_SECRET;
+BOT_ACCESS_TOKEN = process.env.BOT_ACCESS_TOKEN;
+BOT_ACCESS_TOKEN_SECRET = process.env.BOT_ACCESS_TOKEN_SECRET;
+
 exports.Bot = function() 
 {
 	var self = this;
 	
-	self.BOT_SEARCH_PHRASE = process.env.BOT_SEARCH_PHRASE;
-	self.BOT_CONSUMER_KEY = process.env.BOT_CONSUMER_KEY;
-	self.BOT_CONSUMER_SECRET = process.env.BOT_CONSUMER_SECRET;
-	self.BOT_ACCESS_TOKEN = process.env.BOT_ACCESS_TOKEN;
-	self.BOT_ACCESS_TOKEN_SECRET = process.env.BOT_ACCESS_TOKEN_SECRET;
-
 	self.lastscan = -1;
 
 	self.Bot = new Twit({
-	 consumer_key: self.BOT_CONSUMER_KEY,
-	 consumer_secret: self.BOT_CONSUMER_SECRET,
-	 access_token: self.BOT_ACCESS_TOKEN,
-	 access_token_secret: self.BOT_ACCESS_TOKEN_SECRET
+	 consumer_key: BOT_CONSUMER_KEY,
+	 consumer_secret: BOT_CONSUMER_SECRET,
+	 access_token: BOT_ACCESS_TOKEN,
+	 access_token_secret: BOT_ACCESS_TOKEN_SECRET
 	});
 
 	console.log('Setting up Bot');
 
 	self.RetweetStatus = function(status,onComplete) 
 	{
+		console.log("Trying to retweet " + status.id_str)
+		
+		
 		var id = {
 			id : status.id_str
 		}
 		
 		//Check if status has already been favorited or retweeted
 		if(status.favorited || status.retweeted) {
+			console.log("Already favorited or retweeted.")
 			onComplete(false);
 			return;
 		}
 			
-		console.log(status.text)
-		
 		self.Bot.post('favorites/create', id, BotFavorited);
 		
 		function BotFavorited(error,response) 
 		{
 			if (error) {
 				console.log('Bot could not favorite, : ' + error);
-				onComplete(false);
-				return
 			}
 			else {
 				console.log('Bot favorited : ' + id.id);
@@ -68,10 +68,10 @@ exports.Bot = function()
 
 	self.InitiateRetweet = function() {
 
-		console.log('Starting Retweet')
+		console.log('=================Starting Retweet=================')
 
 		var query = {
-			q: self.BOT_SEARCH_PHRASE,
+			q: BOT_SEARCH_PHRASE,
 			result_type: "recent"
 		}
 
