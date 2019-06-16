@@ -1,3 +1,6 @@
+
+Twit = require("twit");
+
 exports.Bot = function() 
 {
 	var self = this;
@@ -8,13 +11,9 @@ exports.Bot = function()
 	self.BOT_ACCESS_TOKEN = process.env.BOT_ACCESS_TOKEN;
 	self.BOT_ACCESS_TOKEN_SECRET = process.env.BOT_ACCESS_TOKEN_SECRET;
 
-
-	self.Twit = require("twit");
-	self.TwitterBot = require("node-twitterbot").TwitterBot;
-
 	self.lastscan = -1;
 
-	self.Bot = new self.Twit({
+	self.Bot = new Twit({
 	 consumer_key: self.BOT_CONSUMER_KEY,
 	 consumer_secret: self.BOT_CONSUMER_SECRET,
 	 access_token: self.BOT_ACCESS_TOKEN,
@@ -50,7 +49,7 @@ exports.Bot = function()
 				console.log('Bot favorited : ' + id.id);
 			}
 				
-			Bot.post('statuses/retweet/:id', id, BotRetweeted);
+			self.Bot.post('statuses/retweet/:id', id, BotRetweeted);
 			
 			function BotRetweeted(error, response) {
 				if (error) {
