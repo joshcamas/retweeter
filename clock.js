@@ -6,7 +6,7 @@ console.log('Setting up Clock');
 
 new CronJob({
   cronTime: "* * * * * *", // Every minute
-  onTick: bot.InitiateRetweet(),
+  onTick: bot.InitiateRetweet,
   start: true,
   timeZone: "America/Los_Angeles"
 });
