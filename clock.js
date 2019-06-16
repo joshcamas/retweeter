@@ -4,9 +4,14 @@ var CronJob = require('cron').CronJob;
 
 console.log('Setting up Clock');
 
+function onTick() {
+	console.log('Tick');
+	bot.InitiateRetweet()
+}
+
 var job = new CronJob({
-  cronTime: "* * * * * *", // Every minute
-  onTick: bot.InitiateRetweet,
+  cronTime: "* * * * *", // Every minute
+  onTick: onTick,
   timeZone: "America/Los_Angeles"
 });
 
