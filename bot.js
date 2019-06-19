@@ -1,5 +1,6 @@
 
 Twit = require("twit");
+config = require("./config.json");
 
 BOT_SEARCH_PHRASE = process.env.BOT_SEARCH_PHRASE;
 BOT_CONSUMER_KEY = process.env.BOT_CONSUMER_KEY;
@@ -72,7 +73,7 @@ exports.Bot = function()
 		console.log('=================Starting Retweet=================')
 
 		var query = {
-			q: BOT_SEARCH_PHRASE,
+			q: config.searchterm,
 			result_type: "recent",
 			count: 5
 		}
